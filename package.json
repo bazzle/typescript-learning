@@ -1,0 +1,12 @@
+{
+	"name": "typescript-development",
+	"version": "1.0.0",
+	"description": "Where I'm learning TypeScript",
+	"scripts": {
+		"dev": "tsc --watch & browser-sync start --server --files '*.js'"
+	},
+	"devDependencies": {
+		"browser-sync": "^2.29.3",
+		"typescript": "^5.8.2"
+	}
+}
