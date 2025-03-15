@@ -1,4 +1,8 @@
-"use strict";
+// Explicit typing
+let myName = "Barry";
+let numberOfHeads = 1;
+let isHuman = false;
+console.log('hi');
 const menu = [
     { name: "Margherita", price: 8 },
     { name: "Peperoni", price: 10 },
