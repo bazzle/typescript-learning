@@ -1,8 +1,6 @@
 {
 	"compilerOptions": {
-		"outFile": "./dist/bundle.js",
-		"module": "system",
-		"target": "ES6"
+		"outFile": "./dist/bundle.js"
 	},
 	"include": ["ts/*.ts"]
 }

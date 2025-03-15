@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "Where I'm learning TypeScript",
 	"scripts": {
-		"dev": "tsc --watch & browser-sync start --server --files '*.js'"
+		"dev": "tsc --watch & browser-sync start --server --files 'dist/bundle.js'"
 	},
 	"devDependencies": {
 		"browser-sync": "^2.29.3",
