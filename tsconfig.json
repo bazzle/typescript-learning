@@ -3,7 +3,6 @@
 		"outFile": "./dist/bundle.js",
 		"removeComments": true,
 		"target": "ES6",
-		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"skipLibCheck": true
