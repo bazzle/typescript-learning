@@ -32,11 +32,12 @@ let nextOrderId:number = 1
 
 // Functions -------------------------------------
 
-const addNewPizza = (pizzaObj:Pizza) => {
+// void return type, means it doesn't return anything
+const addNewPizza = (pizzaObj:Pizza): void => {
 	menu.push(pizzaObj)
 }
 
-const placeOrder = (pizzaName:string) => {
+const placeOrder = (pizzaName:string): Order | undefined => {
 	const orderedPizza = menu.find(item => item.name === pizzaName);
 	if (!orderedPizza){
 		console.log('cant find that pizza name');
@@ -53,8 +54,8 @@ const placeOrder = (pizzaName:string) => {
 	return order;
 }
 
-const completeOrder = (orderId: number) => {
-	const order = orderQueue.find(item => item.orderId === orderId);
+const completeOrder = (orderId: number):Order | undefined => {
+	const order:Order | undefined = orderQueue.find(item => item.orderId === orderId);
 	if (!order){
 		console.log('order not found');
 		return
@@ -63,8 +64,27 @@ const completeOrder = (orderId: number) => {
 	return order
 }
 
+const getPizzaDetail = (identifier:string | number): Pizza | undefined => {
+	let item
+	if (typeof identifier === 'string'){
+		item = menu.find(item => item.name.toLowerCase() === identifier.toLowerCase());
+	} else if (typeof identifier === 'number'){
+		item = menu.find(item => item.id === identifier);
+	} else {
+		throw new TypeError("Argument must be either a string or a number");
+	}
+	return item
+	// if (item === undefined){
+	// 	throw new Error('Cannot find pizza, please check');
+	// } else {
+	// 	return item
+	// }
+}
+
 
 // Run stuff -------------------------------------
+
+// console.log(getPizzaDetail(2));
 
 addNewPizza({name: "Mexican", price: 12, id: 5});
 
@@ -73,4 +93,4 @@ placeOrder('Hawaiian');
 placeOrder('Margherita');
 completeOrder(1);
 
-console.log(orderQueue);
+// console.log(orderQueue);

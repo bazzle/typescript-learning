@@ -6,6 +6,21 @@ function Drink(name, alcoholic, basePrice) {
 }
 const camboucha = new Drink('camboucha', false, 4);
 const aperolSpritz = new Drink('Aperol Spritz', true, 7);
+const users = [
+    { username: "Dave", role: "member" },
+    { username: "Dan", role: "admin" }
+];
+function fetchUserDetails(username) {
+    const user = users.find(item => item.username === username);
+    if (!user) {
+        throw new Error(`User with username ${username} not found`);
+    }
+    return user;
+}
+let role = 'member';
+const userDetail = (identifier) => {
+    return identifier;
+};
 let myName = "Barry";
 let numberOfHeads = 1;
 let isHuman = false;
@@ -38,9 +53,8 @@ let person2 = {
 let people = [person1, person2];
 function displayInfo(person) {
     var _a;
-    console.log(`${person.name}'s postal address is ${(_a = person.postalAddress) === null || _a === void 0 ? void 0 : _a.street}`);
+    return `${person.name}'s postal address is ${(_a = person.postalAddress) === null || _a === void 0 ? void 0 : _a.street}`;
 }
-displayInfo(person1);
 const menu = [
     { name: "Margherita", price: 8, id: 1 },
     { name: "Peperoni", price: 10, id: 2 },
@@ -77,10 +91,21 @@ const completeOrder = (orderId) => {
     order.status = 'completed';
     return order;
 };
+const getPizzaDetail = (identifier) => {
+    let item;
+    if (typeof identifier === 'string') {
+        item = menu.find(item => item.name.toLowerCase() === identifier.toLowerCase());
+    }
+    else if (typeof identifier === 'number') {
+        item = menu.find(item => item.id === identifier);
+    }
+    else {
+        throw new TypeError("Argument must be either a string or a number");
+    }
+    return item;
+};
 addNewPizza({ name: "Mexican", price: 12, id: 5 });
 placeOrder('Veggie');
 placeOrder('Hawaiian');
 placeOrder('Margherita');
 completeOrder(1);
-console.log(orderQueue);
-let role = 'guest';

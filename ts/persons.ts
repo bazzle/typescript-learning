@@ -63,7 +63,7 @@ let people: Person[] = [person1, person2]
 // Do stuff --------------------------------------------------------
 
 function displayInfo(person:Person) {
-	console.log(`${person.name}'s postal address is ${person.postalAddress?.street}`)
+	return `${person.name}'s postal address is ${person.postalAddress?.street}`
 }
 
-displayInfo(person1);
+// console.log( displayInfo(person1) );
