@@ -3,7 +3,7 @@
 type Pizza = {
 	name: string,
 	price: number,
-	id: number
+	id?: number
 }
 
 type Status = 'ordered' | 'completed'
@@ -15,13 +15,15 @@ type Order = {
 }
 
 
-// Variables -------------------------------------
+// Variables / helpers -------------------------------------
+
+let pizzaId: number = 0
 
 const menu : Pizza[] = [
-	{ name: "Margherita", price: 8, id: 1 },
-	{ name: "Peperoni", price: 10, id: 2 },
-	{ name: "Hawaiian", price: 10, id: 3 },
-	{ name: "Veggie", price: 9, id: 4 }
+	{ name: "Margherita", price: 8, id: pizzaId++ },
+	{ name: "Peperoni", price: 10, id: pizzaId++ },
+	{ name: "Hawaiian", price: 10, id: pizzaId++ },
+	{ name: "Veggie", price: 9, id: pizzaId++ }
 ]
 
 let cashInRegister:number = 100
@@ -33,8 +35,8 @@ let nextOrderId:number = 1
 // Functions -------------------------------------
 
 // void return type, means it doesn't return anything
-const addNewPizza = (pizzaObj:Pizza): void => {
-	menu.push(pizzaObj)
+const addNewPizza = (pizza:Omit<Pizza, 'id'>): void => {
+    menu.push(pizza);
 }
 
 const placeOrder = (pizzaName:string): Order | undefined => {
@@ -85,8 +87,11 @@ const getPizzaDetail = (identifier:string | number): Pizza | undefined => {
 // Run stuff -------------------------------------
 
 // console.log(getPizzaDetail(2));
+// console.log(menu)
 
-addNewPizza({name: "Mexican", price: 12, id: 5});
+addNewPizza({name: "Mexican", price: 12});
+addNewPizza({name: "Americano", price: 12});
+addNewPizza({name: "BBQ", price: 12});
 
 placeOrder('Veggie');
 placeOrder('Hawaiian');
